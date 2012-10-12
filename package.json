@@ -1,0 +1,11 @@
+{
+    "name": "pipe-to-syslog",
+    "version": "0.2.1",
+    "dependencies": {
+	"carrier": "latest"
+    },
+    "engines": {
+	"node": "0.8.x",
+	"npm": "1.1.x"
+    }
+}

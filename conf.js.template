@@ -1,0 +1,38 @@
+function get_config()
+{
+    var self = {};
+    self['web'] = {
+        sinks: [
+            {
+                //channel: { type: 'socket', port: 40000 },
+                channel: { type: 'tail', file: '/var/log/node/out.log' },
+                level: 'info',
+                tag: 'web',
+                facility: 'user',
+            },
+            {
+                //              channel: { type: 'socket', port: 40001 },
+                channel: { type: 'tail', file: '/var/log/node/err.log' },
+                level: 'error',
+                tag: 'web',
+                facility: 'user',
+            }],
+        hostname: '<hostname to use in logs>',
+        server: '<syslog server ip>',
+        port: 514 };
+    
+    self['background'] = {
+        sink: {
+	    //channel: { type: 'socket', port: 40000 },
+            channel: { type: 'tail', file: '/var/log/django/all.log' },
+            level: 'info',
+            tag: 'web',	
+            facility: 'user',
+        },
+        hostname: '<hostname to use in logs>',
+        server: '<syslog server ip>',
+        port: 10514 };
+    return self;
+}
+
+module.exports.get_config = get_config;
